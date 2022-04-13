@@ -4,12 +4,12 @@ import styled from "styled-components";
 const Card = (props) => (
   <Container>
     <Cover>
-      <Image source={require("../assets/game1.jpg")} />
-      <Title>Destiny 2</Title>
+      <Image source={props.image} />
+      <Title>{props.title}</Title>
     </Cover>
     <Content>
-      <Caption>Bungie</Caption>
-      <Subtitle>Feb 22, 2022</Subtitle>
+      <Caption>{props.caption}</Caption>
+      <Subtitle>{props.subtitle}</Subtitle>
     </Content>
   </Container>
 );
@@ -24,14 +24,12 @@ const Content = styled.View`
 
 const Caption = styled.Text`
   font-size: 18px;
-  font-weight: bold;
   padding-bottom: 4px;
 `;
 
 const Subtitle = styled.Text`
   font-size: 14px;
   text-transform: uppercase;
-  font-weight: 600;
   color: gray;
 `;
 

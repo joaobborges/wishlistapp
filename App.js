@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, ScrollView, SafeAreaView } from "react-native";
 import styled from "styled-components";
 import Card from "./components/Card";
+import Upcoming from "./components/Upcoming";
 import Logo from "./components/Logo";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import {
@@ -52,30 +53,21 @@ export default function App() {
             <StatusBar style="auto" />
           </TitleBar>
 
-          <Subtitle>Popular Games</Subtitle>
+          <Subtitle>Trending Games</Subtitle>
           <ScrollView
             horizontal={true}
             style={{ paddingBottom: 24 }}
             showsHorizontalScrollIndicator={false}
           >
-            <Card
-              title="Destiny 2: Witch Queen"
-              image={require("./assets/game1.jpg")}
-              caption="Bungie"
-              subtitle="Rpg, FPS, Shooter, MMO"
-            />
-            <Card
-              title="Elden Ring"
-              image={require("./assets/game2.jpg")}
-              caption="From Software"
-              subtitle="RPG"
-            />
-            <Card
-              title="Overwatch"
-              image={require("./assets/game3.jpg")}
-              caption="Activision Blizzard"
-              subtitle="FPS, Shooter"
-            />
+            {popular.map((popular, index) => (
+              <Card
+                key={index}
+                image={popular.image}
+                title={popular.title}
+                caption={popular.caption}
+                subtitle={popular.subtitle}
+              />
+            ))}
           </ScrollView>
           <Subtitle>Popular Genres</Subtitle>
           <ScrollView
@@ -83,13 +75,26 @@ export default function App() {
             horizontal={true}
             showsHorizontalScrollIndicator={false}
           >
-            <Logo image={require("./assets/favicon.png")} text="Sandbox" />
-            <Logo
-              image={require("./assets/favicon.png")}
-              text="Real-time strategy"
-            />
-            <Logo image={require("./assets/favicon.png")} text="Shooters" />
-            <Logo image={require("./assets/favicon.png")} text="Role-playing" />
+            {genres.map((genres, index) => (
+              <Logo key={index} image={genres.image} text={genres.text} />
+            ))}
+          </ScrollView>
+          <Subtitle>Releasing Soon</Subtitle>
+          <ScrollView
+            style={{
+              flexDirection: "column",
+              paddingTop: 24,
+              paddingBottom: 24,
+            }}
+          >
+            {upcoming.map((upcoming, index) => (
+              <Upcoming
+                key={index}
+                image={upcoming.image}
+                title={upcoming.title}
+                release={upcoming.release}
+              />
+            ))}
           </ScrollView>
         </ScrollView>
       </SafeAreaView>
@@ -104,7 +109,7 @@ const Subtitle = styled.Text`
   font-weight: 600;
   font-size: 28px;
   margin-left: 20px;
-  margin-top: 24px;
+  margin-top: 40px;
 `;
 
 const Avatar = styled.Image`
@@ -142,3 +147,71 @@ const TitleBar = styled.View`
   margin-top: 50px;
   padding-left: 80px;
 `;
+
+const popular = [
+  {
+    image: require("./assets/game1.jpg"),
+    title: "Destiny",
+    caption: "Bungie",
+    subtitle: "Rpg, FPS, Shooter, MMO",
+  },
+  {
+    image: require("./assets/game2.jpg"),
+    title: "Elden Ring",
+    caption: "From Software",
+    subtitle: "RPG",
+  },
+  {
+    image: require("./assets/game3.jpg"),
+    title: "Overwatch",
+    caption: "Activision Blizzard",
+    subtitle: "FPS, Shooter",
+  },
+];
+
+const genres = [
+  {
+    image: require("./assets/favicon.png"),
+    text: "Sandbox",
+  },
+  {
+    image: require("./assets/favicon.png"),
+    text: "Real-time strategy",
+  },
+  {
+    image: require("./assets/favicon.png"),
+    text: "Shooters",
+  },
+  {
+    image: require("./assets/favicon.png"),
+    text: "Role-playing",
+  },
+];
+
+const upcoming = [
+  {
+    image: require("./assets/game1.jpg"),
+    title: "Lego Star Wars: The Skywalker...",
+    release: "21 / 07 / 1985",
+  },
+  {
+    image: require("./assets/game1.jpg"),
+    title: "MLB The Show 22",
+    release: "21 / 07 / 1985",
+  },
+  {
+    image: require("./assets/game1.jpg"),
+    title: "Tiny Tina's Wonderlands",
+    release: "21 / 07 / 1985",
+  },
+  {
+    image: require("./assets/game1.jpg"),
+    title: "Ghostwire: Tokyo",
+    release: "21 / 07 / 1985",
+  },
+  {
+    image: require("./assets/game1.jpg"),
+    title: "Rune Factory 5",
+    release: "21 / 07 / 1985",
+  },
+];

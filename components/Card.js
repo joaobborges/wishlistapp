@@ -23,11 +23,13 @@ const Content = styled.View`
 `;
 
 const Caption = styled.Text`
+  font-family: "Inter_600SemiBold";
   font-size: 18px;
   padding-bottom: 4px;
 `;
 
 const Subtitle = styled.Text`
+  font-family: "Inter_600SemiBold";
   font-size: 14px;
   text-transform: uppercase;
   color: gray;
@@ -60,6 +62,7 @@ const Image = styled.Image`
 `;
 
 const Title = styled.Text`
+  font-family: "Inter_600SemiBold";
   color: white;
   font-size: 24px;
   font-weight: bold;
